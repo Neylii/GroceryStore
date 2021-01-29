@@ -11,6 +11,10 @@ public class GroceryStore {
 		this.name = name;
 		articles = new ArrayList<Article>();
 	}
+	
+	public void addArticle(String name, int price) {
+		articles.add(new Article(name, price));
+		}
 
 	public String getName() {
 		return name;
@@ -18,5 +22,9 @@ public class GroceryStore {
 
 	public List<Article> getArticles() {
 		return articles;
+	}
+	
+	public String toString() {
+		return String.format("Welcome to %s!", name);
 	}
 }
