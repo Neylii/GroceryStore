@@ -13,6 +13,14 @@ public class GroceryStore {
 	}
 	
 	public void addArticle(String name, int price) {
+		if(price < 0) {
+			throw new IllegalArgumentException("The price can't be negative.");
+		}
+		for(Article article : articles) {
+			if(article.getName().toLowerCase().equals(name.toLowerCase())) {
+				throw new IllegalArgumentException("The article already exists.");
+			}
+		}
 		articles.add(new Article(name, price));
 		}
 

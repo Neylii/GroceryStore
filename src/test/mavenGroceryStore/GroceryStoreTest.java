@@ -18,4 +18,17 @@ public class GroceryStoreTest {
 		gs.addArticle("Banana", 5);
 		assertEquals("Banana", gs.getArticles().get(0).getName());
 	}
+	
+	@Test
+	public void testAddArticleWithNegativePrice() {
+		GroceryStore gs = new GroceryStore("Ica Kvantum");
+		assertThrows(IllegalArgumentException.class, () -> gs.addArticle("Banana", -10));
+	}
+	
+	@Test
+	public void testAddArticleThatAlreadyExist() {
+		GroceryStore gs = new GroceryStore("Ica Kvantum");
+		gs.addArticle("Banana", 5);
+		assertThrows(IllegalArgumentException.class, () -> gs.addArticle("Banana", 5));
+	}
 }
