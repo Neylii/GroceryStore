@@ -2,15 +2,25 @@ package mavenGroceryStore;
 
 import static org.junit.Assert.*;
 
+
 import org.junit.Test;
 
+// TestClass for Cart
 public class CartTest {
+	
+	private Cart myCart;
+	private Article art1;
+	private Article art2;
+	
+	// Creates objects for easy use throughout the testing.
+	public CartTest() {
+		myCart = new Cart();
+		art1 = new Article("Apple", 10);
+		art2 = new Article("Banana", 10);
+	}
 
 	@Test
 	public void testAddItemToCart() {
-		Cart myCart = new Cart();
-		Article art1 = new Article("Apple", 10);
-		Article art2 = new Article("Banana", 10);
 		myCart.addItemToCart(art1);
 		myCart.addItemToCart(art2);
 		
@@ -19,9 +29,6 @@ public class CartTest {
 
 	@Test
 	public void testRemoveItemFromCart() {
-		Cart myCart = new Cart();
-		Article art1 = new Article("Apple", 10);
-		Article art2 = new Article("Banana", 10);
 		myCart.addItemToCart(art1);
 		myCart.addItemToCart(art2);
 		myCart.removeItemFromCart(art2);
@@ -31,11 +38,8 @@ public class CartTest {
 
 	@Test
 	public void testCheckItemInCart() {
-		Cart myCart = new Cart();
-		Article art1 = new Article("Apple", 10);
-		Article art2 = new Article("Apple", 10);
 		myCart.addItemToCart(art1);
-		myCart.addItemToCart(art2);
+		myCart.addItemToCart(art1);
 
 		assertEquals("Apple : 2" + "\n", myCart.checkItemInCart(myCart.getCart()));
 	}
