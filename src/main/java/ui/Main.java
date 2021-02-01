@@ -1,6 +1,5 @@
 package ui;
 
-
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,7 +11,7 @@ import mavenGroceryStore.MainMethods;
 public class Main {
 
 	public static void main(String[] args) {
-		
+
 		Scanner scan = new Scanner(System.in);
 		GroceryStore ica = new GroceryStore("Ica");
 		Cart cart = new Cart();
@@ -29,6 +28,21 @@ public class Main {
 			List<Article> allArticles = ica.getArticles();
 			// loop that asks what the user wants to do
 			answer = MainMethods.options(scan, answer);
+			// if customer answers 4 they stop the loop
+			if (answer == 4) {
+				break;
+			} else if (answer == 1) {
+				// This loop will continue until customer doesnt want to add anything to the
+				// cart
+				answer = MainMethods.itemLoop(scan, cart, answer, allArticles);
+			} else if (answer == 2) {
+				MainMethods.displayCart(cart);
+				MainMethods.displayRemoveArticles(scan, cart, answer);
+			} else if (answer == 3) {
+				MainMethods.displayCart(cart);
+				System.out.println(MainMethods.checkOut(cart.getCart()));
+				break;
+			}
 		} while (true);
 
 	}
