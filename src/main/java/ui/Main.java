@@ -1,9 +1,35 @@
 package ui;
 
+
+import java.util.List;
+import java.util.Scanner;
+
+import mavenGroceryStore.Article;
+import mavenGroceryStore.Cart;
+import mavenGroceryStore.GroceryStore;
+import mavenGroceryStore.MainMethods;
+
 public class Main {
 
 	public static void main(String[] args) {
 		
+		Scanner scan = new Scanner(System.in);
+		GroceryStore ica = new GroceryStore("Ica");
+		Cart cart = new Cart();
+
+		ica.addArticle("Banana", 5);
+		ica.addArticle("Apple", 7);
+		ica.addArticle("Chocolate", 15);
+
+		System.out.printf("Welcome to %s! \n", ica.getName());
+
+		int answer = 0;
+		// main loop, runs as long as user is in the store(not saying leave)
+		do {
+			List<Article> allArticles = ica.getArticles();
+			// loop that asks what the user wants to do
+			answer = MainMethods.options(scan, answer);
+		} while (true);
 
 	}
 
