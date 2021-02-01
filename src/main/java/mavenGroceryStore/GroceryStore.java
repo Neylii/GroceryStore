@@ -17,11 +17,11 @@ public class GroceryStore {
 			throw new IllegalArgumentException("The price can't be negative.");
 		}
 		for(Article article : articles) {
-			if(article.getName().toLowerCase().equals(name.toLowerCase())) {
+			if(article.getName().trim().toLowerCase().equals(name.trim().toLowerCase())) {
 				throw new IllegalArgumentException("The article already exists.");
 			}
 		}
-		articles.add(new Article(name, price));
+		articles.add(new Article(name.trim(), price));
 		}
 
 	public String getName() {
