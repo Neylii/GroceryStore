@@ -1,27 +1,25 @@
 package mavenGroceryStore;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.HashMap;
 
 /**
- * This class creates a cart which serves as a grocery cart for 
- * the user to put selected Articles in.
+ * This class creates a cart which serves as a grocery cart for the user to put
+ * selected Articles in.
  * 
  * @author emma.fredriksson
  */
 public class Cart {
-	private List<Article> cart;
+	Map<Article, Integer> cart;
 
 	/**
-	 * Constructor sets the cart to an ArrayList.
+	 * Constructor sets the cart to a HashMap.
 	 */
 	public Cart() {
-		cart = new ArrayList<Article>();
+		cart = new HashMap<>();
 	}
 
-	public List<Article> getCart() {
+	public Map<Article, Integer> getCart() {
 		return cart;
 	}
 
@@ -30,8 +28,13 @@ public class Cart {
 	 * 
 	 * @param Article to be added.
 	 */
-	public void addItemToCart(Article article) {
-		cart.add(article);
+	public void addArticleToCart(Article article) {
+		if (cart.containsKey(article)) {
+			Integer articleCount = cart.get(article);
+			cart.put(article, ++articleCount);
+		} else {
+			cart.put(article, 1);
+		}
 	}
 
 	/**
@@ -39,36 +42,31 @@ public class Cart {
 	 * 
 	 * @param Article to be removed
 	 */
-	public void removeItemFromCart(Article article) {
-		if (cart.contains(article)) {
-			cart.remove(cart.indexOf(article));
+	public void removeArticleFromCart(Article article) {
+		if (cart.containsKey(article)) {
+			Integer sumOfArt = cart.get(article);
+			cart.put(article, --sumOfArt);
+		}
+		if (cart.containsKey(article) && cart.containsValue(0)) {
+			cart.remove(article);
 		}
 	}
 
 	/**
-	 * This method counts the frequency of Articles in the ArrayList. 
-	 * Maps them to a TreeMap and thereafter loops through the Map. 
-	 * Make use of a StringBuilder to print out the content of the list, 
-	 * one entry on a new row.
+	 * Make use of a StringBuilder to print out the content of the HashMap, one
+	 * entry on a new row.
 	 * 
-	 * @param cart the ArrayList to count.
-	 * @return The content of the ArrayList as a string.
+	 * @return The content of the HashMap as a string.
 	 */
-	public String checkItemInCart(List<Article> cart) {
-		Map<String, Integer> artCount = new TreeMap<>();
-		for (Article article : cart) {
-			if (artCount.containsKey(article.getName())) {
-				Integer sumOfArt = artCount.get(article.getName());
-				artCount.put(article.getName(), ++sumOfArt);
-			} else {
-				artCount.put(article.getName(), 1);
-			}
-		}
-
+	public String printCart() {
 		StringBuilder sb = new StringBuilder();
-		for (Map.Entry<String, Integer> entry : artCount.entrySet()) {
-			sb.append((entry.getKey() + " : " + entry.getValue() + "\n"));
+		int i = 1;
+		sb.append("You have: \n");
+		for (Map.Entry<Article, Integer> entry : cart.entrySet()) {
+			sb.append(i + " : " + entry.getKey().getName() + " x " + entry.getValue() + "\n");
+			i++;
 		}
 		return sb.toString();
 	}
+
 }
