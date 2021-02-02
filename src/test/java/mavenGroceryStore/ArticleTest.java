@@ -17,6 +17,16 @@ public class ArticleTest {
 		art2 = new Article("Banana", 10);
 	}
 	
+	@Test
+    public void testCreateArticlePriceZero() {
+		assertThrows(IllegalArgumentException.class, () -> new Article("Pear", 0));
+	}
+	
+	@Test
+    public void testCreateArticleNameNull() {
+		assertThrows(IllegalArgumentException.class, () -> new Article(null, 5));
+	}
+		
     @Test
     public void testRightSumArticlesInCart() {
     	myCart.addArticleToCart(art1);

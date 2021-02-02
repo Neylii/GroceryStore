@@ -16,9 +16,13 @@ public class Main {
 		GroceryStore ica = new GroceryStore("Ica");
 		Cart cart = new Cart();
 
-		ica.addArticle("Banana", 5);
-		ica.addArticle("Apple", 7);
-		ica.addArticle("Chocolate", 15);
+		try {
+			ica.addArticle("Banana", -2);
+			ica.addArticle("Apple", 7);
+			ica.addArticle("Chocolate", 15);
+		} catch (IllegalArgumentException ex) {
+			System.out.println(ex);
+		}
 
 		System.out.printf("Welcome to %s! \n", ica.getName());
 
