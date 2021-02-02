@@ -2,45 +2,44 @@ package mavenGroceryStore;
 
 import static org.junit.Assert.*;
 
-
 import org.junit.Test;
 
 // TestClass for Cart
 public class CartTest {
-	
-	private Cart myCart;
+
+	private Cart testCart;
 	private Article art1;
 	private Article art2;
-	
+
 	// Creates objects for easy use throughout the testing.
 	public CartTest() {
-		myCart = new Cart();
+		testCart = new Cart();
 		art1 = new Article("Apple", 10);
 		art2 = new Article("Banana", 10);
 	}
 
 	@Test
-	public void testAddItemToCart() {
-		myCart.addItemToCart(art1);
-		myCart.addItemToCart(art2);
-		
-		assertEquals(2, myCart.getCart().size());
+	public void testAddArticleToCart() {
+		testCart.addArticleToCart(art1);
+		testCart.addArticleToCart(art2);
+
+		assertEquals(2, testCart.getCart().size());
 	}
 
 	@Test
-	public void testRemoveItemFromCart() {
-		myCart.addItemToCart(art1);
-		myCart.addItemToCart(art2);
-		myCart.removeItemFromCart(art2);
-		
-		assertFalse(myCart.getCart().contains(art2));
+	public void testRemoveArticleFromCart() {
+		testCart.addArticleToCart(art1);
+		testCart.addArticleToCart(art2);
+		testCart.removeArticleFromCart(art1);
+
+		assertFalse(testCart.getCart().containsKey(art1));
 	}
 
 	@Test
-	public void testCheckItemInCart() {
-		myCart.addItemToCart(art1);
-		myCart.addItemToCart(art1);
+	public void testPrintCart() {
+		testCart.addArticleToCart(art1);
+		testCart.addArticleToCart(art1);
 
-		assertEquals("Apple : 2" + "\n", myCart.checkItemInCart(myCart.getCart()));
+		assertEquals("You have: \n" + 1 + " : Apple x " + 2 + "\n", testCart.printCart());
 	}
 }
