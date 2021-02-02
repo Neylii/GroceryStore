@@ -16,19 +16,37 @@ public class MainMethods {
 				answer = scan.nextInt();
 			} else {
 				scan.nextLine();
-				System.out.println("Skriv en siffra");
+				System.out.println("Choose a number");
 			}
 		} while (answer < 1 || answer > 4);
 		return answer;
 	}
 
-	public static void displayCart(Cart cart) {
-		System.out.println("Your cart has:");
-		System.out.println(cart.checkItemInCart(cart.getCart()));
-	}
-
 	public static void displayRemoveArticles(Scanner scan, Cart cart, int answer) {
 		if (removeItemCheck(scan)) {
+			while (true) {
+				System.out.println("What article do you want to remove?");
+				System.out.println("0: None");
+				// loops all articles and shows them on screen.
+				cart.printCart();
+				if (scan.hasNextInt()) {
+					answer = scan.nextInt();
+					if (answer == 0) {
+						break;
+						// checks if customer adds an article we have
+					} else if (answer < 1 || answer > cart.getCart().size()) {
+						System.out.println("We dont have that article");
+					} else {
+						// adds article to cart
+						//display name for the article you removed.
+						//System.out.printf("You removed %s to your cart \n", );
+						//cart.removeArticleFromCart();
+					}
+				} else {
+					scan.nextLine();
+					System.out.println("Not a number");
+				}
+			}
 		}
 	}
 
@@ -54,35 +72,31 @@ public class MainMethods {
 	}
 
 	public static int itemLoop(Scanner scan, Cart cart, int answer, List<Article> allArticles) {
-        while (true) {
-            System.out.println("What article do you want to buy?");
-            System.out.println("0: None");
-            // loops all articles and shows them on screen.
-            for (int i = 1; i < allArticles.size() + 1; i++) {
-                System.out.printf("%d: Article: %s Price: %dkr\n", i, allArticles.get(i - 1).getName(),
-                        allArticles.get(i - 1).getPrice());
-            }
-            if (scan.hasNextInt()) {
-                answer = scan.nextInt();
-                if (answer == 0) {
-                    break;
-                    // checks if customer adds an article we have
-                } else if (answer < 1 || answer > allArticles.size()) {
-                    System.out.println("We dont have that article");
-                } else {
-                    // adds article to cart
-                    System.out.printf("You added %s to your cart \n", allArticles.get(answer - 1).getName());
-                    cart.addItemToCart(allArticles.get(answer - 1));
-                }
-            } else {
-                scan.nextLine();
-                System.out.println("Not a number");
-            }
-        }
-        return answer;
-    }
-
-	public static String checkOut(List<Article> cart) {
-		return String.format("Your total is: %d", Article.sumArticlesInCart(cart));
+		while (true) {
+			System.out.println("What article do you want to buy?");
+			System.out.println("0: None");
+			// loops all articles and shows them on screen.
+			for (int i = 1; i < allArticles.size() + 1; i++) {
+				System.out.printf("%d: Article: %s Price: %dkr\n", i, allArticles.get(i - 1).getName(),
+						allArticles.get(i - 1).getPrice());
+			}
+			if (scan.hasNextInt()) {
+				answer = scan.nextInt();
+				if (answer == 0) {
+					break;
+					// checks if customer adds an article we have
+				} else if (answer < 1 || answer > allArticles.size()) {
+					System.out.println("We dont have that article");
+				} else {
+					// adds article to cart
+					System.out.printf("You added %s to your cart \n", allArticles.get(answer - 1).getName());
+					cart.addArticleToCart(allArticles.get(answer - 1));
+				}
+			} else {
+				scan.nextLine();
+				System.out.println("Not a number");
+			}
+		}
+		return answer;
 	}
 }

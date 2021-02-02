@@ -1,6 +1,6 @@
 package mavenGroceryStore;
 
-import java.util.List;
+import java.util.Map;
 
 public class Article {
 	private String name;
@@ -19,18 +19,10 @@ public class Article {
 		return price;
 	}
 	
-	public static int sumArticlesInCart(List<Article> cart) {
+	public static int sumArticlesInCart(Map<Article, Integer> cart) {
 		int sum = 0;
-		for (Article article : cart) {
-			sum += article.getPrice();
-		}
-		return sum;
-	}
-	
-	public static int sumArticlesInCart(List<Article> cart) {
-		int sum = 0;
-		for (Article article : cart) {
-			sum += article.getPrice();
+		for (Map.Entry<Article, Integer> entry : cart.entrySet()) {
+			sum += entry.getKey().getPrice() * entry.getValue();
 		}
 		return sum;
 	}
