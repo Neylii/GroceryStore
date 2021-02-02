@@ -26,4 +26,12 @@ public class Article {
 		}
 		return sum;
 	}
+	
+	public static int sumArticlesInCart(List<Article> cart) {
+		int sum = 0;
+		for (Article article : cart) {
+			sum += article.getPrice();
+		}
+		return sum;
+	}
 }
