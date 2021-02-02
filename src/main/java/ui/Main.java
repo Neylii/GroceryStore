@@ -20,7 +20,7 @@ public class Main {
 		ica.addArticle("Apple", 7);
 		ica.addArticle("Chocolate", 15);
 
-		System.out.printf("Welcome to %s! /n", ica.getName());
+		System.out.printf("Welcome to %s! \n", ica.getName());
 
 		int answer = 0;
 		// main loop, runs as long as user is in the store(not saying leave)

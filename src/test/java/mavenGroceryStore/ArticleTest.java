@@ -29,8 +29,8 @@ public class ArticleTest {
 
     @Test
     public void testRightSumArticlesInCart() {
-    	myCart.addItemToCart(art1);
-    	myCart.addItemToCart(art2);
+    	myCart.addArticleToCart(art1);
+    	myCart.addArticleToCart(art2);
     	
         assertEquals(20, Article.sumArticlesInCart(myCart.getCart()));
     }
