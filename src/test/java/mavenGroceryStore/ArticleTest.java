@@ -17,16 +17,6 @@ public class ArticleTest {
 		art2 = new Article("Banana", 10);
 	}
 	
-	@Test
-	public void testRightName() {
-		assertEquals("Apple", art1.getName());
-	}
-	
-	@Test
-	public void testRightPrice() {
-		assertEquals(10, art1.getPrice());
-	}
-
     @Test
     public void testRightSumArticlesInCart() {
     	myCart.addArticleToCart(art1);
