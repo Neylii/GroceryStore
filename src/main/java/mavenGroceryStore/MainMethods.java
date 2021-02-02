@@ -28,7 +28,7 @@ public class MainMethods {
 				System.out.println("What article do you want to remove?");
 				System.out.println("0: None");
 				// loops all articles and shows them on screen.
-				cart.printCart();
+				System.out.println(cart.printCart());
 				if (scan.hasNextInt()) {
 					answer = scan.nextInt();
 					if (answer == 0) {
@@ -37,10 +37,13 @@ public class MainMethods {
 					} else if (answer < 1 || answer > cart.getCart().size()) {
 						System.out.println("We dont have that article");
 					} else {
-						// adds article to cart
-						//display name for the article you removed.
-						//System.out.printf("You removed %s to your cart \n", );
-						//cart.removeArticleFromCart();
+						System.out.printf("You removed %s to your cart%n", cart.getCartList().get(answer-1).getName());
+						for(Article a : cart.getCartList()) {
+							if (cart.getCartList().get(answer-1).equals(a)) {
+								cart.removeArticleFromCart(a);
+								break;
+							}
+						}
 					}
 				} else {
 					scan.nextLine();
