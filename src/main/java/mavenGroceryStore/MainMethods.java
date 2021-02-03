@@ -7,7 +7,7 @@ public class MainMethods {
 
 	public static int options(Scanner scan, int answer) {
 		do {
-			System.out.println("What do you wish to do?");
+			System.out.println("\nWhat do you wish to do?");
 			System.out.println("1: Buy articles");
 			System.out.println("2: Check cart");
 			System.out.println("3: Pay");
@@ -25,9 +25,8 @@ public class MainMethods {
 	public static void displayRemoveArticles(Scanner scan, Cart cart, int answer) {
 		if (removeItemCheck(scan)) {
 			while (true) {
-				System.out.println("What article do you want to remove?");
+				System.out.println("\nWhat article do you want to remove?");
 				System.out.println("0: None");
-				// loops all articles and shows them on screen.
 				cart.printCart();
 				if (scan.hasNextInt()) {
 					answer = scan.nextInt();
@@ -37,10 +36,6 @@ public class MainMethods {
 					} else if (answer < 1 || answer > cart.getCart().size()) {
 						System.out.println("We dont have that article");
 					} else {
-						// adds article to cart
-						//display name for the article you removed.
-						//System.out.printf("You removed %s to your cart \n", );
-						//cart.removeArticleFromCart();
 					}
 				} else {
 					scan.nextLine();
@@ -73,7 +68,7 @@ public class MainMethods {
 
 	public static int itemLoop(Scanner scan, Cart cart, int answer, List<Article> allArticles) {
 		while (true) {
-			System.out.println("What article do you want to buy?");
+			System.out.println("\nWhat article do you want to buy?");
 			System.out.println("0: None");
 			// loops all articles and shows them on screen.
 			for (int i = 1; i < allArticles.size() + 1; i++) {

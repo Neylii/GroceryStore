@@ -17,11 +17,11 @@ public class Main {
 		Cart cart = new Cart();
 
 		try {
-			ica.addArticle("Banana", -2);
-			ica.addArticle("Apple", 7);
+			ica.addArticle("Banana", 5);
+			ica.addArticle("Apple", 10);
 			ica.addArticle("Chocolate", 15);
 		} catch (IllegalArgumentException ex) {
-			System.out.println(ex);
+			System.err.println(ex);
 		}
 
 		System.out.printf("Welcome to %s! \n", ica.getName());
@@ -40,10 +40,11 @@ public class Main {
 				// cart
 				answer = MainMethods.itemLoop(scan, cart, answer, allArticles);
 			} else if (answer == 2) {
+				//prints out what's in the cart and lets the user remove items if they want
 				System.out.println(cart.printCart());
 				MainMethods.displayRemoveArticles(scan, cart, answer);
 			} else if (answer == 3) {
-				System.out.printf("Your total is: %dkr /n", Article.sumArticlesInCart(cart.getCart()));
+				System.out.printf("\nYour total is: %dkr \n", Article.sumArticlesInCart(cart.getCart()));
 				break;
 			}
 		} while (true);
