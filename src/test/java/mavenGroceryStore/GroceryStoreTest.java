@@ -20,7 +20,7 @@ public class GroceryStoreTest {
 	}
 	
 	@Test
-	public void testAddArticleWithNegativePrice() {
+	public void testAddArticleWithNegativePrice() { 
 		GroceryStore gs = new GroceryStore("Ica Kvantum");
 		assertThrows(IllegalArgumentException.class, () -> gs.addArticle("Banana", -10));
 	}
