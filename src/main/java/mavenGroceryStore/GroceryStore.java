@@ -47,6 +47,6 @@ public class GroceryStore {
 	}
 
 	public String toString() {
-		return String.format("Welcome to %s!", name);
+		return name;
 	}
 }
