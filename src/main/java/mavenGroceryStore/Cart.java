@@ -1,7 +1,9 @@
 package mavenGroceryStore;
 
 import java.util.Map;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * This class creates a cart which serves as a grocery cart for the user to put
@@ -10,13 +12,18 @@ import java.util.HashMap;
  * @author emma.fredriksson
  */
 public class Cart {
-	Map<Article, Integer> cart;
+	private List<Article> cartList;
+	private Map<Article, Integer> cart;
 
 	/**
-	 * Constructor sets the cart to a HashMap.
+	 * Constructor sets the cartList to an ArrayList and cart to a HashMap.
 	 */
 	public Cart() {
+		cartList = new ArrayList<>();
 		cart = new HashMap<>();
+	}
+	public List<Article> getCartList() {
+		return cartList;
 	}
 
 	public Map<Article, Integer> getCart() {
@@ -29,6 +36,8 @@ public class Cart {
 	 * @param Article to be added.
 	 */
 	public void addArticleToCart(Article article) {
+		if(!cartList.contains(article))
+		cartList.add(article);
 		if (cart.containsKey(article)) {
 			Integer articleCount = cart.get(article);
 			cart.put(article, ++articleCount);
@@ -49,11 +58,12 @@ public class Cart {
 		}
 		if (cart.containsKey(article) && cart.containsValue(0)) {
 			cart.remove(article);
+			cartList.remove(article);
 		}
 	}
 
 	/**
-	 * Make use of a StringBuilder to print out the content of the HashMap, one
+	 * Make use of a StringBuilder to print out the content of the cart, one
 	 * entry on a new row.
 	 * 
 	 * @return The content of the HashMap as a string.
@@ -61,9 +71,9 @@ public class Cart {
 	public String printCart() {
 		StringBuilder sb = new StringBuilder();
 		int i = 1;
-		sb.append("You have: \n");
-		for (Map.Entry<Article, Integer> entry : cart.entrySet()) {
-			sb.append(i + " : " + entry.getKey().getName() + " x " + entry.getValue() + "\n");
+		sb.append("\nYou have: \n");
+		for (Article article : cartList) {
+			sb.append(i + ": " + article.getName() + " x " + cart.get(article) + "\n");
 			i++;
 		}
 		return sb.toString();
