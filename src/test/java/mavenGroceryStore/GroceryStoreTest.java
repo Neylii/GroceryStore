@@ -29,6 +29,6 @@ public class GroceryStoreTest {
 	public void testAddArticleThatAlreadyExist() {
 		GroceryStore gs = new GroceryStore("Ica Kvantum");
 		gs.addArticle("Banana", 5);
-		assertThrows(IllegalArgumentException.class, () -> gs.addArticle("Banana", 5));
+		assertThrows(IllegalArgumentException.class, () -> gs.addArticle("BaNana ", 5));
 	}
 }
