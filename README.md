@@ -2,13 +2,21 @@
 
 ## Download and run:
 **1** - Go to this link: https://github.com/Neylii/GroceryStore .
+
 **2** - Press on clone.
+
 **3** - Download zip.
+
 **4** - Extract zip where you want it.
+
 **5** - Open command promt.
+
 **6** - Navigate to src\main\java (Tip: go to explorer and navigate the the Java folder and copy the search path) cd "path". E.g"GroceryStore-main\src\main\java".
+
 **7** - Then write "javac ui\Main.java".
+
 **8** - After that write "java -cp ui\Main.java;. ui.Main".
+
 
 ## Using the application:
 When you run the application, you'll get 4 options. You can get articles and place them in your cart (1), check your cart (2), buy what you have in cart (3), or leave the store without buying anything (4).
