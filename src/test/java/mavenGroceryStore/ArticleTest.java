@@ -18,19 +18,19 @@ public class ArticleTest {
 	}
 	
 	@Test
-	public void testRightName() {
-		assertEquals("Apple", art1.getName());
+    public void testCreateArticlePriceZero() {
+		assertThrows(IllegalArgumentException.class, () -> new Article("Pear", 0));
 	}
 	
 	@Test
-	public void testRightPrice() {
-		assertEquals(10, art1.getPrice());
+    public void testCreateArticleNameNull() {
+		assertThrows(IllegalArgumentException.class, () -> new Article(null, 5));
 	}
-
+		
     @Test
     public void testRightSumArticlesInCart() {
-    	myCart.addItemToCart(art1);
-    	myCart.addItemToCart(art2);
+    	myCart.addArticleToCart(art1);
+    	myCart.addArticleToCart(art2);
     	
         assertEquals(20, Article.sumArticlesInCart(myCart.getCart()));
     }
