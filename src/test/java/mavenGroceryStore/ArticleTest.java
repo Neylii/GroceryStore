@@ -17,14 +17,14 @@ public class ArticleTest {
 		art2 = new Article("Banana", 10);
 	}
 	
-	@Test
+	@Test(expected = IllegalArgumentException.class)
     public void testCreateArticlePriceZero() {
-		assertThrows(IllegalArgumentException.class, () -> new Article("Pear", 0));
+		new Article("Pear", 0);
 	}
 	
-	@Test
+	@Test(expected = IllegalArgumentException.class)
     public void testCreateArticleNameNull() {
-		assertThrows(IllegalArgumentException.class, () -> new Article(null, 5));
+		new Article(null, 5);
 	}
 		
     @Test
