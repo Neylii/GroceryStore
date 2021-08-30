@@ -15,6 +15,10 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<properties>
+  		<sonar.projectKey>GroceryGit</sonar.projectKey>
+	</properties>
 
 	<build>
 		<plugins>
